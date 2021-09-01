@@ -43,6 +43,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public Collider blowerAOE;
+        private bool m_Blow;
+
         // Use this for initialization
         private void Start()
         {
@@ -82,6 +85,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if (!m_Blow)
+            {
+                m_Blow = CrossPlatformInputManager.GetButton("Fire1");
+            }
         }
 
 
@@ -132,6 +140,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+
+            if (m_Blow)
+            {
+                blowerAOE.enabled = true;
+            }
+            else
+            {
+                blowerAOE.enabled = false;
+            }
+
+            m_Blow = false;
         }
 
 
