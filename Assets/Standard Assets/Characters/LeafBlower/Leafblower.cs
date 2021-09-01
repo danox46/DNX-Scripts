@@ -20,7 +20,14 @@ public class Leafblower : MonoBehaviour
         {
             foreach(Rigidbody bodie in bodies)
             {
-                bodie.AddForce(new Vector3(this.transform.forward.x, this.transform.forward.y + 1, this.transform.forward.z));
+
+                float distance = Mathf.Abs(bodie.transform.position.x - transform.position.x) + Mathf.Abs(bodie.transform.position.z - transform.position.z);
+
+                distance = distance * 2;
+
+                bodie.AddForce((new Vector3(this.transform.forward.x * (1 / distance), this.transform.forward.y + (distance / 6f), this.transform.forward.z * (1 / distance)))/4);
+
+                bodie.AddTorque(new Vector3(Random.value, Random.value, Random.value));
             }
             
         }
