@@ -75,8 +75,13 @@
     <Compile Include="Assets\Scripts\LeafBlower\Leafblower.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Inverter.cs" />
-    <Compile Include="Assets\Scripts\FlexibleObject.cs" />
+    <Compile Include="Assets\Scripts\Leaf\FlexibleObject.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Sequence.cs" />
+    <Compile Include="Assets\Scripts\Quests\QuestSystem.cs" />
+    <Compile Include="Assets\Scripts\Quests\QuestItem.cs" />
+    <Compile Include="Assets\Scripts\Composter.cs" />
+    <Compile Include="Assets\Scripts\Leaf\Leaf.cs" />
+    <Compile Include="Assets\Scripts\Character\LeafBlowerChar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />

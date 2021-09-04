@@ -26,11 +26,10 @@ public class Leafblower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponentInParent<FirstPersonController>().blowerAOE.enabled)
+        if (GetComponentInParent<LeafBlowerChar>().blowerAOE.enabled)
         {
             foreach(Rigidbody bodie in bodies)
             {
-
                 float distance = Mathf.Abs(bodie.transform.position.x - transform.position.x) + Mathf.Abs(bodie.transform.position.z - transform.position.z);
 
                 distance = distance * 2;
@@ -92,7 +91,20 @@ public class Leafblower : MonoBehaviour
 
             if (!bodies.Contains(currentBody))
             {
-                bodies.Add(currentBody);
+
+                if (currentBody.tag == "Leaf")
+                {
+                    Leaf newLeaf = currentBody.GetComponent<Leaf>();
+
+                    newLeaf.SetBlowerOnRange(this);
+
+                    if(!newLeaf.setToDestroy)
+                        bodies.Add(currentBody);
+                }
+                else
+                    bodies.Add(currentBody);
+
+                
             }
         }
 
@@ -106,6 +118,12 @@ public class Leafblower : MonoBehaviour
 
             if (bodies.Contains(currentBody))
             {
+
+                if(TryGetComponent<FlexibleObject>(out FlexibleObject newLeaf))
+                {
+                    newLeaf.SetBlowerOutOfRange();
+                }
+
                 bodies.Remove(currentBody);
             }
         }
@@ -130,6 +148,14 @@ public class Leafblower : MonoBehaviour
             transform.localRotation = m_BlowerTargetRot;
         }
 
+    }
+
+    public void RemoveLeaf(Rigidbody leaf)
+    {
+        if (bodies.Contains(leaf))
+        {
+            bodies.Remove(leaf);
+        }
     }
 
     Quaternion ClampRotationAroundXAxis(Quaternion q)

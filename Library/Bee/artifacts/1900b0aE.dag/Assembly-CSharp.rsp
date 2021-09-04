@@ -329,7 +329,10 @@
 "Assets/SampleScenes/Scripts/ParticleSceneControls.cs"
 "Assets/SampleScenes/Scripts/PlaceTargetWithMouse.cs"
 "Assets/SampleScenes/Scripts/SlowMoButton.cs"
-"Assets/Scripts/FlexibleObject.cs"
+"Assets/Scripts/Character/LeafBlowerChar.cs"
+"Assets/Scripts/Composter.cs"
+"Assets/Scripts/Leaf/FlexibleObject.cs"
+"Assets/Scripts/Leaf/Leaf.cs"
 "Assets/Scripts/LeafBlower/Leafblower.cs"
 "Assets/Scripts/NPCs/Behaviour Tree Setup/BaseNode.cs"
 "Assets/Scripts/NPCs/Behaviour Tree Setup/BaseTree.cs"
@@ -339,6 +342,8 @@
 "Assets/Scripts/NPCs/Behaviour Tree Setup/Sequence.cs"
 "Assets/Scripts/NPCs/Behaviour Tree Setup/Timer.cs"
 "Assets/Scripts/NPCs/NPC.cs"
+"Assets/Scripts/Quests/QuestItem.cs"
+"Assets/Scripts/Quests/QuestSystem.cs"
 -langversion:8.0
 
 /deterministic

@@ -43,9 +43,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        public Collider blowerAOE;
-        private bool m_Blow;
-
         // Use this for initialization
         private void Start()
         {
@@ -63,7 +60,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         // Update is called once per frame
-        private void Update()
+        protected virtual void Update()
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
@@ -86,10 +83,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-            if (!m_Blow)
-            {
-                m_Blow = CrossPlatformInputManager.GetButton("Fire1");
-            }
+            
         }
 
 
@@ -101,7 +95,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             float speed;
             GetInput(out speed);
@@ -141,16 +135,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MouseLook.UpdateCursorLock();
 
-            if (m_Blow)
-            {
-                blowerAOE.enabled = true;
-            }
-            else
-            {
-                blowerAOE.enabled = false;
-            }
-
-            m_Blow = false;
+           
         }
 
 

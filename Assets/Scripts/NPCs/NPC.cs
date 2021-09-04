@@ -8,8 +8,12 @@ public class NPC : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Animator m_Animator;
     public GameObject interactionClue;
-        
+
     //Stats
+    [SerializeField] private string npcName;
+
+    public string GivenName { get => npcName; }
+
     [SerializeField] private float speed;
 
     //AI
