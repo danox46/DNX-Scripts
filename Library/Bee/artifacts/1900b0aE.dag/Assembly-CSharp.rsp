@@ -331,6 +331,7 @@
 "Assets/SampleScenes/Scripts/SlowMoButton.cs"
 "Assets/Scripts/Character/LeafBlowerChar.cs"
 "Assets/Scripts/Composter.cs"
+"Assets/Scripts/Dialogs/DialogManager.cs"
 "Assets/Scripts/Leaf/FlexibleObject.cs"
 "Assets/Scripts/Leaf/Leaf.cs"
 "Assets/Scripts/LeafBlower/Leafblower.cs"

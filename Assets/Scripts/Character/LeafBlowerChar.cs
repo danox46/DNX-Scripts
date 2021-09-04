@@ -6,9 +6,12 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class LeafBlowerChar : FirstPersonController
 {
-
+    public DialogManager dialogManager;
     public Collider blowerAOE;
     private bool m_Blow;
+    private bool m_Interact;
+    private NPC npcInRange;
+    
 
     protected override void Update()
     {
@@ -17,6 +20,11 @@ public class LeafBlowerChar : FirstPersonController
         if (!m_Blow)
         {
             m_Blow = CrossPlatformInputManager.GetButton("Fire1");
+        }
+
+        if (!m_Interact)
+        {
+            m_Interact = CrossPlatformInputManager.GetButtonUp("Interact");
         }
     }
 
@@ -33,7 +41,21 @@ public class LeafBlowerChar : FirstPersonController
             blowerAOE.enabled = false;
         }
 
+        if (m_Interact)
+        {
+            if(npcInRange != null)
+            {
+                dialogManager.LaunchDialogSequence(npcInRange);
+            }
+        }
+
         m_Blow = false;
+        m_Interact = false;
+    }
+
+    public void SetNpcInRange(NPC npc)
+    {
+        npcInRange = npc;
     }
 
 }

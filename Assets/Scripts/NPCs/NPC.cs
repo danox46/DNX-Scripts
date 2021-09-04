@@ -9,6 +9,15 @@ public class NPC : MonoBehaviour
     private Animator m_Animator;
     public GameObject interactionClue;
 
+    //Dialog
+    [SerializeField] private List<Dialog> availableDialogs;
+    private bool engaged;
+    public string greeting;
+
+    public bool Engaged { get => engaged; }
+
+    public List<Dialog> Dialogs { get => availableDialogs; }
+
     //Stats
     [SerializeField] private string npcName;
 
@@ -23,6 +32,7 @@ public class NPC : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponent<Animator>();
+        engaged = false;
     }
 
     private void Update()
@@ -58,8 +68,12 @@ public class NPC : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if(!interactionClue.activeSelf)
+
+            if (!interactionClue.activeSelf)
+            {
+                other.GetComponent<LeafBlowerChar>().SetNpcInRange(this);
                 interactionClue.SetActive(true);
+            }
         }
     }
 
@@ -68,8 +82,22 @@ public class NPC : MonoBehaviour
         if (other.tag == "Player")
         {
             if (interactionClue.activeSelf)
+            {
+                other.GetComponent<LeafBlowerChar>().SetNpcInRange(null);
                 interactionClue.SetActive(false);
+            }
         }
+    }
+
+    public void SetNPCEngaged(Transform engagedWith)
+    {
+        engaged = true;
+        transform.LookAt(engagedWith);
+    }
+
+    public void DisengageNPC()
+    {
+        engaged = false;
     }
 
 }
