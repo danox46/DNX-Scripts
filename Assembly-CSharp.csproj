@@ -66,8 +66,17 @@
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\LeafBlower\Leafblower.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\Scripts\FlexibleObject.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\BaseTree.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Timer.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Inverter.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Selector.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Sequence.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Parallel.cs" />
+    <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\BaseNode.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />

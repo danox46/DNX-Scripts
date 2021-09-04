@@ -34,7 +34,6 @@ public class FlexibleObject : MonoBehaviour
                     if (constraints[i].maxDistance > 0.2)
                         constraints[i].maxDistance = 0.2f;
 
-                    Debug.Log("Incrementing constraints: " + m_Cloth.coefficients[i].maxDistance);
                 }
             }
 
