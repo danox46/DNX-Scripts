@@ -83,14 +83,22 @@ public class DialogManager : MonoBehaviour
             {
                 if (activeDialog.isQuest)
                 {
-                    if (m_Char.m_QuestSystem.CheckItems(activeDialog.quest))
+                    if (!m_Char.m_QuestSystem.IsCompleted(activeDialog.quest))
                     {
-                        m_Char.m_QuestSystem.FinishQuest(activeDialog.quest);
-                    }
-                    else
-                    {
-                        m_Char.m_QuestSystem.ReciveQuest(activeDialog.quest);
-                        Debug.Log("You recived a quest");
+                        if (m_Char.m_QuestSystem.CheckItems(activeDialog.quest))
+                        {
+                            UpdateQuestDialog(true);
+                            m_Char.m_QuestSystem.FinishQuest(activeDialog.quest);
+                            SelectOption(currentDialogOptions.IndexOf(activeDialog));
+                            m_Npc.availableDialogs.Remove(activeDialog);
+                            return;
+                        }
+                        else
+                        {
+                            UpdateQuestDialog(false);
+                            m_Char.m_QuestSystem.ReciveQuest(activeDialog.quest);
+                            Debug.Log("You recived a quest");
+                        }
                     }
                 }
             }
@@ -121,8 +129,22 @@ public class DialogManager : MonoBehaviour
             buttons[i].GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = currentDialogOptions[i].dialogTitle;
         }
 
-        
+    }
 
+    private void UpdateQuestDialog(bool finished)
+    {
+        int dialogIndex = m_Npc.availableDialogs.IndexOf(activeDialog);
+
+        if (finished)
+        {
+            m_Npc.availableDialogs[dialogIndex].dialogTitle = activeDialog.quest.questName;
+            m_Npc.availableDialogs[dialogIndex].sentences = activeDialog.quest.completedDialog;
+        }
+        else
+        {
+            m_Npc.availableDialogs[dialogIndex].dialogTitle = "Deliver";
+            m_Npc.availableDialogs[dialogIndex].sentences = activeDialog.quest.expectingDialog;
+        }
     }
 
     public void SelectOption(int index)

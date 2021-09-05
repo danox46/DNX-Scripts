@@ -13,6 +13,8 @@ public class LeafBlowerChar : FirstPersonController
     private NPC npcInRange;
     private QuestItem itemInRage;
     public QuestSystem m_QuestSystem;
+    public int coins;
+    [SerializeField] private List<GameObject> leafblowers;
 
     protected override void Start()
     {
@@ -108,6 +110,20 @@ public class LeafBlowerChar : FirstPersonController
     public void DisengageChar()
     {
         m_MouseLook.LockCursor(true);
+    }
+
+    public void ChangeBlower(int inx)
+    {
+        Transform auxBloweTransform = blowerAOE.transform;
+        
+        GameObject newBlower = Instantiate(leafblowers[inx], this.transform);
+
+        newBlower.transform.localPosition = auxBloweTransform.localPosition;
+        newBlower.transform.localRotation = auxBloweTransform.localRotation;
+
+        blowerAOE = newBlower.GetComponent<Collider>();
+
+        GameObject.Destroy(auxBloweTransform.gameObject);
     }
 
 }

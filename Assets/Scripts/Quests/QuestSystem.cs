@@ -16,6 +16,8 @@ public struct Quest
     public bool completed;
     public NPC triggerNPC;
     public NPC finishNPC;
+    public string[] expectingDialog;
+    public string[] completedDialog;
 }
 
 public class QuestSystem : MonoBehaviour
@@ -99,7 +101,41 @@ public class QuestSystem : MonoBehaviour
                 activeQuests.Remove(finishedQuest);
             }
 
-            Debug.Log("Award reward from quest here");
+            int itemIndex = -1;
+
+            foreach(QuestItemInfo item in questInventory)
+            {
+                if(item.m_Code == finishedQuest.requirementCode)
+                {
+                    itemIndex = questInventory.IndexOf(item);
+                }
+            }
+
+            if(itemIndex >= 0)
+            {
+                questInventory.RemoveAt(itemIndex);
+            }
+
+            ClaimReward(finishedQuest.rewardCode);
         }
+    }
+
+    private void ClaimReward(int rewardCode)
+    {
+        switch (rewardCode)
+        {
+            case 0:
+                GetComponent<LeafBlowerChar>().coins += 5;
+                Debug.Log("I got 5 coins");
+                break;
+        }
+    }
+
+    public bool IsCompleted(Quest currentQuest)
+    {
+        if (completedQuests.Contains(currentQuest))
+            return true;
+        else 
+            return false;
     }
 }

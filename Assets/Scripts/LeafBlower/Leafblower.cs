@@ -6,13 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Leafblower : MonoBehaviour
 {
-    public float YSensitivity = 2f;
-    private Quaternion m_BlowerTargetRot;
-    public float MinimumX = -90F;
-    public float MaximumX = 90F;
-    public bool clampVerticalRotation = true;
-    public bool smooth;
-    public float smoothTime = 5f;
+
 
     private List<Rigidbody> bodies;
 
@@ -20,7 +14,7 @@ public class Leafblower : MonoBehaviour
     void Start()
     {
         bodies = new List<Rigidbody>();
-        m_BlowerTargetRot = transform.localRotation;
+
     }
 
     // Update is called once per frame
@@ -54,22 +48,6 @@ public class Leafblower : MonoBehaviour
                     xRotation = -xRotation;
                 }
 
-                /*if(parentTransform.position.x < bodie.position.x)
-                {
-                    if(parentTransform.position.z < bodie.transform.position.z)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else
-                {
-
-                }*/
-
 
                 bodie.AddTorque(new Vector3(xRotation, 0, zRotation));
             }
@@ -79,8 +57,6 @@ public class Leafblower : MonoBehaviour
         {
             bodies = new List<Rigidbody>();
         }
-
-        //LookAtYLocation();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -129,11 +105,7 @@ public class Leafblower : MonoBehaviour
         }
     }
 
-    public void LookAtYLocation()
-    {
-        
 
-    }
 
     public void RemoveLeaf(Rigidbody leaf)
     {
@@ -143,19 +115,5 @@ public class Leafblower : MonoBehaviour
         }
     }
 
-    Quaternion ClampRotationAroundXAxis(Quaternion q)
-    {
-        q.x /= q.w;
-        q.y /= q.w;
-        q.z /= q.w;
-        q.w = 1.0f;
 
-        float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
-
-        angleX = Mathf.Clamp(angleX, MinimumX, MaximumX);
-
-        q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
-
-        return q;
-    }
 }

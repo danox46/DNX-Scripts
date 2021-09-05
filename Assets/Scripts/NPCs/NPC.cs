@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour
     public GameObject interactionClue;
 
     //Dialog
-    [SerializeField] private List<Dialog> availableDialogs;
+    public List<Dialog> availableDialogs;
     private bool engaged;
     public string greeting;
 
