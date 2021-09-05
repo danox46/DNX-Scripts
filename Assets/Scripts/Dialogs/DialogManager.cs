@@ -83,7 +83,15 @@ public class DialogManager : MonoBehaviour
             {
                 if (activeDialog.isQuest)
                 {
-                    //AwardQuest
+                    if (m_Char.m_QuestSystem.CheckItems(activeDialog.quest))
+                    {
+                        m_Char.m_QuestSystem.FinishQuest(activeDialog.quest);
+                    }
+                    else
+                    {
+                        m_Char.m_QuestSystem.ReciveQuest(activeDialog.quest);
+                        Debug.Log("You recived a quest");
+                    }
                 }
             }
 
@@ -99,6 +107,7 @@ public class DialogManager : MonoBehaviour
             currentButton.gameObject.SetActive(false);
         }
 
+        activeDialog = null;
         endInteractionButton.SetActive(true);
         dialogButton.SetActive(false);
 
@@ -108,8 +117,6 @@ public class DialogManager : MonoBehaviour
         {
             buttons[i].gameObject.SetActive(true);
 
-            Debug.Log("Activating Button of Name: " + buttons[i].name);
-            Debug.Log("Cecking # of current options: " + currentDialogOptions.Count);
 
             buttons[i].GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = currentDialogOptions[i].dialogTitle;
         }

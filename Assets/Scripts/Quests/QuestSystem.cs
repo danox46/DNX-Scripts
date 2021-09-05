@@ -21,13 +21,14 @@ public struct Quest
 public class QuestSystem : MonoBehaviour
 {
     [SerializeField] private List<Quest> activeQuests;
-    private List<QuestItem> questInventory;
+    [SerializeField] private List<QuestItemInfo> questInventory;
     private List<Quest> completedQuests;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        completedQuests = new List<Quest>();
+        questInventory = new List<QuestItemInfo>();
     }
 
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class QuestSystem : MonoBehaviour
     {
         foreach (Quest currentQuest in activeQuests)
         {
-            if(currentQuest.requirementCode == newItem.ItemCode)
+            if(currentQuest.requirementCode == newItem.questItemInfo.m_Code)
             {
                 Debug.Log("You got an item, deliver it to " + currentQuest.finishNPC.GivenName);
                 return true;
@@ -61,9 +62,9 @@ public class QuestSystem : MonoBehaviour
 
     public bool CheckItems(Quest newQuest)
     {
-        foreach (QuestItem currentItem in questInventory)
+        foreach (QuestItemInfo currentItem in questInventory)
         {
-            if (currentItem.ItemCode == newQuest.requirementCode)
+            if (currentItem.m_Code == newQuest.requirementCode)
             {
                 Debug.Log("I already have that item");
                 return true;
@@ -76,6 +77,15 @@ public class QuestSystem : MonoBehaviour
     public void MarkQuestReady(Quest currentQuest)
     {
         currentQuest.readyForDeliver = true;
+    }
+
+    public void LootItem(QuestItem item)
+    {
+        if (!questInventory.Contains(item.questItemInfo))
+        {
+            questInventory.Add(new QuestItemInfo(item.questItemInfo));
+            item.SetForDestruction();
+        }
     }
 
     public void FinishQuest(Quest finishedQuest)
