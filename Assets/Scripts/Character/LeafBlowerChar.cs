@@ -11,6 +11,8 @@ public class LeafBlowerChar : FirstPersonController
     private bool m_Blow;
     private bool m_Interact;
     private NPC npcInRange;
+    private QuestItem itemInRage;
+    public QuestSystem m_QuestSystem;
 
     protected override void Start()
     {
@@ -24,6 +26,9 @@ public class LeafBlowerChar : FirstPersonController
         m_Jumping = false;
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform, blowerAOE.transform);
+        m_QuestSystem = GetComponent<QuestSystem>();
+        npcInRange = null;
+        itemInRage = null;
     }
 
     protected override void Update()
@@ -60,6 +65,19 @@ public class LeafBlowerChar : FirstPersonController
             {
                 dialogManager.LaunchDialogSequence(npcInRange);
             }
+
+            if(itemInRage != null)
+            {
+
+                if (m_QuestSystem.CheckQuests(itemInRage))
+                {
+                    Debug.Log("Somone needs this, I should take it to them");
+                }
+
+                m_QuestSystem.LootItem(itemInRage);
+
+                itemInRage = null;
+            }
         }
 
         m_Blow = false;
@@ -69,6 +87,11 @@ public class LeafBlowerChar : FirstPersonController
     public void SetNpcInRange(NPC npc)
     {
         npcInRange = npc;
+    }
+
+    public void SetItemInRange(QuestItem questItem)
+    {
+        itemInRage = questItem;
     }
 
     protected override void RotateView()
