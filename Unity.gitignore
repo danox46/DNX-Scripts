@@ -75,6 +75,7 @@ crashlytics-build.properties
 # =============== #
 Temp/
 Library/
+[Ll]ibrary/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
