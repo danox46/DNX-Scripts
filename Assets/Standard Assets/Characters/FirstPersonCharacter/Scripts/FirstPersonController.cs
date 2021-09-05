@@ -18,33 +18,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] protected MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
-        [SerializeField] private FOVKick m_FovKick = new FOVKick();
+        [SerializeField] protected FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
-        [SerializeField] private CurveControlledBob m_HeadBob = new CurveControlledBob();
+        [SerializeField] protected CurveControlledBob m_HeadBob = new CurveControlledBob();
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
-        [SerializeField] private float m_StepInterval;
+        [SerializeField] protected float m_StepInterval;
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private Camera m_Camera;
+        protected Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
-        private CharacterController m_CharacterController;
+        protected CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
-        private Vector3 m_OriginalCameraPosition;
-        private float m_StepCycle;
-        private float m_NextStep;
-        private bool m_Jumping;
-        private AudioSource m_AudioSource;
+        protected Vector3 m_OriginalCameraPosition;
+        protected float m_StepCycle;
+        protected float m_NextStep;
+        protected bool m_Jumping;
+        protected AudioSource m_AudioSource;
 
         // Use this for initialization
-        private void Start()
+        protected virtual void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -62,7 +62,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         protected virtual void Update()
         {
-            RotateView();
+            if(m_MouseLook.CursorIsLocked)
+                RotateView();
+
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
@@ -111,8 +113,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x * speed;
             m_MoveDir.z = desiredMove.z * speed;
 
+            if (m_MouseLook.CursorIsLocked)
+            {
 
-            if (m_CharacterController.isGrounded)
+                if (m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
 
@@ -131,9 +135,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
 
-            ProgressStepCycle(speed);
-            UpdateCameraPosition(speed);
+            
 
+                ProgressStepCycle(speed);
+                UpdateCameraPosition(speed);
+            }
 
             m_MouseLook.UpdateCursorLock();
 
@@ -241,7 +247,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void RotateView()
+        protected virtual void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
         }

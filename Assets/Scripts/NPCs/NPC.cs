@@ -92,7 +92,7 @@ public class NPC : MonoBehaviour
     public void SetNPCEngaged(Transform engagedWith)
     {
         engaged = true;
-        transform.LookAt(engagedWith);
+        //transform.LookAt(engagedWith);
     }
 
     public void DisengageNPC()

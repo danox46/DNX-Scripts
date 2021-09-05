@@ -9,12 +9,15 @@ public class Dialog
     [TextArea(1, 3)]
     public string[] sentences;
     public string dialogTitle;
+    public bool isQuest;
+    public Quest quest;
 }
 
 public class DialogManager : MonoBehaviour
 {
     private List<Dialog> currentDialogOptions;
     private Queue<string> activeSentences;
+    private Dialog activeDialog;
     
     private NPC m_Npc;
 
@@ -39,6 +42,7 @@ public class DialogManager : MonoBehaviour
         m_Npc = npc;
         currentDialogOptions = npc.Dialogs;
         npc.SetNPCEngaged(m_Char.transform);
+        m_Char.EngageChar();
 
         activeSentences.Clear();
 
@@ -56,7 +60,7 @@ public class DialogManager : MonoBehaviour
     public void EndDialogSequence()
     {
         m_Npc.DisengageNPC();
-
+        m_Char.DisengageChar();
         activeSentences.Clear();
 
         foreach (GameObject currentButton in optionButtons)
@@ -75,7 +79,16 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
+            if (activeDialog != null) 
+            {
+                if (activeDialog.isQuest)
+                {
+                    //AwardQuest
+                }
+            }
+
             LoadDialogOptions();
+
         }
     }
 
@@ -113,6 +126,8 @@ public class DialogManager : MonoBehaviour
         
         if(index < currentDialogOptions.Count)
         {
+            activeDialog = currentDialogOptions[index];
+
             foreach(string sentence in currentDialogOptions[index].sentences)
             {
                 activeSentences.Enqueue(sentence);
@@ -137,5 +152,7 @@ public class DialogManager : MonoBehaviour
         }
         
     }
+
+
 
 }

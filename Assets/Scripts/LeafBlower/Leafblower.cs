@@ -80,7 +80,7 @@ public class Leafblower : MonoBehaviour
             bodies = new List<Rigidbody>();
         }
 
-        LookAtYLocation();
+        //LookAtYLocation();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -131,22 +131,7 @@ public class Leafblower : MonoBehaviour
 
     public void LookAtYLocation()
     {
-        float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
-
-        m_BlowerTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
-
-        if (clampVerticalRotation)
-            m_BlowerTargetRot = ClampRotationAroundXAxis(m_BlowerTargetRot);
-
-        if (smooth)
-        {
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, m_BlowerTargetRot,
-                smoothTime * Time.deltaTime);
-        }
-        else
-        {
-            transform.localRotation = m_BlowerTargetRot;
-        }
+        
 
     }
 

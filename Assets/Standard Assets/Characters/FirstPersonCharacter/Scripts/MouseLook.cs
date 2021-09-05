@@ -19,9 +19,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
+        private Quaternion m_BlowerTargetRot;
         private bool m_cursorIsLocked = true;
 
-        public bool CursorIsLocked { get => m_cursorIsLocked; }
+        public bool CursorIsLocked { get => m_cursorIsLocked;}
+        
 
         public void Init(Transform character, Transform camera)
         {
@@ -29,36 +31,62 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CameraTargetRot = camera.localRotation;
         }
 
+        public void Init(Transform character, Transform camera, Transform blower)
+        {
+            m_CharacterTargetRot = character.localRotation;
+            m_CameraTargetRot = camera.localRotation;
+            m_BlowerTargetRot = blower.localRotation;
+        }
+
 
         public void LookRotation(Transform character, Transform camera)
         {
-            if (CursorIsLocked)
+
+            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+
+            m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+            if (clampVerticalRotation)
+                m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+
+            if (smooth)
             {
-
-                float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-                float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
-
-                m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-                m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
-
-                if (clampVerticalRotation)
-                    m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
-
-                if (smooth)
-                {
-                    character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
-                        smoothTime * Time.deltaTime);
-                    camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
-                        smoothTime * Time.deltaTime);
-                }
-                else
-                {
-                    character.localRotation = m_CharacterTargetRot;
-                    camera.localRotation = m_CameraTargetRot;
-                }
+                character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
+                    smoothTime * Time.deltaTime);
+                camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
+                    smoothTime * Time.deltaTime);
+            }
+            else
+            {
+                character.localRotation = m_CharacterTargetRot;
+                camera.localRotation = m_CameraTargetRot;
             }
 
+
             UpdateCursorLock();
+        }
+
+        public void BlowerLookRotationY(Transform blower)
+        {
+
+            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+
+            m_BlowerTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+            if (clampVerticalRotation)
+                m_BlowerTargetRot = ClampRotationAroundXAxis(m_BlowerTargetRot);
+
+            if (smooth)
+            {
+                blower.localRotation = Quaternion.Slerp(blower.localRotation, m_BlowerTargetRot,
+                    smoothTime * Time.deltaTime);
+            }
+            else
+            {
+                blower.localRotation = m_BlowerTargetRot;
+            }
         }
 
         public void SetCursorLock(bool value)
@@ -80,14 +108,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void InternalLockUpdate()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
+            /*if(Input.GetKeyUp(KeyCode.Escape))
             {
                 m_cursorIsLocked = false;
             }
             else if(Input.GetMouseButtonUp(0))
             {
                 m_cursorIsLocked = true;
-            }
+            }*/
 
             if (m_cursorIsLocked)
             {
@@ -115,6 +143,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
 
             return q;
+        }
+
+        public void LockCursor(bool value)
+        {
+            m_cursorIsLocked = value;
         }
 
     }
