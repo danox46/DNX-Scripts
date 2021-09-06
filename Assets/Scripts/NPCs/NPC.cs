@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class NPC : MonoBehaviour
@@ -8,10 +9,12 @@ public class NPC : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Animator m_Animator;
     public GameObject interactionClue;
+    public NavMeshAgent m_NavMesh;
 
     //Dialog
     public List<Dialog> availableDialogs;
     private bool engaged;
+    public Transform engagedWith;
     public string greeting;
 
     public bool Engaged { get => engaged; }
@@ -26,6 +29,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private float speed;
 
     //AI
+    public Transform currentPatrolPoint;
     [SerializeField] List<Transform> patrolPoints;
 
     private void Start()
@@ -33,6 +37,12 @@ public class NPC : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponent<Animator>();
         engaged = false;
+        m_NavMesh = GetComponent<NavMeshAgent>();
+
+        if (patrolPoints.Count > 0)
+            currentPatrolPoint = patrolPoints[0];
+        else
+            currentPatrolPoint = null;
     }
 
     private void Update()
@@ -42,7 +52,7 @@ public class NPC : MonoBehaviour
 
     }
 
-    public void Move(Vector3 direction)
+    /*public void Move(Vector3 direction)
     {
         Vector3 movement = direction.normalized;
         Vector3 newVelocity = new Vector3(movement.x * speed, m_Rigidbody.velocity.y, movement.z);
@@ -51,11 +61,11 @@ public class NPC : MonoBehaviour
         transform.LookAt(newVelocity + transform.position);
         m_Rigidbody.velocity = newVelocity;
 
-    }
+    }*/
 
     private void SetAnimToWalk()
     {
-        if (m_Rigidbody.velocity.magnitude > 0.01)
+        if (m_Rigidbody.velocity.magnitude > 0.6)
         {
             if (!m_Animator.GetBool("Walking"))
                 m_Animator.SetBool("Walking", true);
@@ -94,15 +104,23 @@ public class NPC : MonoBehaviour
     }
 
     //I did this function to add anything we might need on the dialog trigger for polishing
-    public void SetNPCEngaged(Transform engagedWith)
+    public void SetNPCEngaged(Transform engagedTo)
     {
+        engagedWith = engagedTo;
         engaged = true;
-        //transform.LookAt(engagedWith);
     }
 
     public void DisengageNPC()
     {
         engaged = false;
+        engagedWith = null;
+    }
+
+    public void EndWait()
+    {
+        //Change patrol point
+        if(patrolPoints.Count > 0)
+            currentPatrolPoint = patrolPoints[Random.Range(0, patrolPoints.Count - 1)];
     }
 
 }
