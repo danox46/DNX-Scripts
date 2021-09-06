@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 119686590716174863}
   m_Layer: 0
   m_Name: Frogerta
-  m_TagString: Untagged
+  m_TagString: Npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,18 +72,18 @@ NavMeshAgent:
   m_GameObject: {fileID: 119686590716174859}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2854182424962524628
 MonoBehaviour:
@@ -110,14 +110,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionClue: {fileID: 966127124972368319}
-  availableDialogs: []
+  m_NavMesh: {fileID: 0}
+  availableDialogs:
+  - sentences:
+    - Yes I've heard of the tree of life
+    - You should ask croky, he loves that nerdy stuff
+    dialogTitle: Tree of life
+    isQuest: 0
+    quest:
+      questName: 
+      questDescription: 
+      requirementCode: 0
+      rewardCode: 0
+      readyForDeliver: 0
+      completed: 0
+      triggerNPC: {fileID: 0}
+      finishNPC: {fileID: 0}
+      expectingDialog: []
+      completedDialog: []
+  - sentences:
+    - Yes I've heard of the tree of life
+    - You should ask croky, he loves that nerdy stuff
+    dialogTitle: Need help?
+    isQuest: 1
+    quest:
+      questName: Getting the phone
+      questDescription: Frogerta lost her phone
+      requirementCode: 1
+      rewardCode: 0
+      readyForDeliver: 0
+      completed: 0
+      triggerNPC: {fileID: 119686590716174856}
+      finishNPC: {fileID: 119686590716174856}
+      expectingDialog:
+      - Did you find my phone?
+      - I need it for stuff
+      completedDialog:
+      - Thankssss!!!! here's a reward
   engagedWith: {fileID: 0}
-  greeting: 
-  npcName: 
+  greeting: Hello
+  npcName: Frogerta
+  talkRate: 0.5
   speed: 5
-  isPatrollingChar: 0
   currentPatrolPoint: {fileID: 0}
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 0}
 --- !u!136 &119686590716174857
 CapsuleCollider:
   m_ObjectHideFlags: 0

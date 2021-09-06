@@ -5897,6 +5897,191 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1693752147
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: npcName
+      value: Frogerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: greeting
+      value: Hello
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: talkRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: patrolPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: patrolPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 810179184}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: patrolPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 2064782667}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: patrolPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1751431342}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: patrolPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1428971998}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].isQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[0].dialogTitle
+      value: Tree of life
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].dialogTitle
+      value: Need help?
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.finishNPC
+      value: 
+      objectReference: {fileID: 1801009099}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.questName
+      value: Getting the phone
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.triggerNPC
+      value: 
+      objectReference: {fileID: 1801009099}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[0].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.requirementCode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.questDescription
+      value: Frogerta lost her phone
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[0].sentences.Array.data[0]
+      value: Yes I've heard of the tree of life
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[0].sentences.Array.data[1]
+      value: You should ask croky, he loves that nerdy stuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].sentences.Array.data[0]
+      value: Yes I've heard of the tree of life
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].sentences.Array.data[1]
+      value: You should ask croky, he loves that nerdy stuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.completedDialog.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.expectingDialog.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.completedDialog.Array.data[0]
+      value: Thankssss!!!! here's a reward
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.expectingDialog.Array.data[0]
+      value: Did you find my phone?
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: availableDialogs.Array.data[1].quest.expectingDialog.Array.data[1]
+      value: I need it for stuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174859, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_Name
+      value: Frogerta (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174859, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_TagString
+      value: Npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 125.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 163.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304431934380218724, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304431934380218724, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_WalkableMask
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304431934380218724, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
 --- !u!1 &1712667948
 GameObject:
   m_ObjectHideFlags: 0
@@ -6137,6 +6322,17 @@ Transform:
   m_Father: {fileID: 872227520}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801009099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+  m_PrefabInstance: {fileID: 1693752147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235c3636533d36409a4eab34c107db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1950582481 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1357055519726417697, guid: 0fc059e88b190724ab7f5e5ba8949dd2, type: 3}
@@ -6765,28 +6961,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
-      propertyPath: patrolPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
       objectReference: {fileID: 810179184}
-    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
-      propertyPath: patrolPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 2064782667}
-    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
-      propertyPath: patrolPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1751431342}
-    - target: {fileID: 119686590716174856, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
-      propertyPath: patrolPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1428971998}
     - target: {fileID: 119686590716174859, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
       propertyPath: m_Name
       value: Frogerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 119686590716174859, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
       propertyPath: m_RootOrder
@@ -6831,14 +7015,6 @@ PrefabInstance:
     - target: {fileID: 784443261274273969, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304431934380218724, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
-      propertyPath: m_WalkableMask
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304431934380218724, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c50f42cec91abd4eaa76b8fe8a5d01f, type: 3}

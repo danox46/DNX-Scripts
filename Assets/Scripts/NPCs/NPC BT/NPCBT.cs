@@ -21,7 +21,16 @@ public class NPCBT : BaseTree
         {
             new Sequence(new List<BaseNode>{ 
                 new C_CharIsEngaged(currentChar),
-                new T_LookAtTarget(currentChar)
+                new T_LookAtTarget(currentChar),
+                new Selector(new List<BaseNode>
+                {
+                    new C_CharEngagedToPlayer(currentChar),
+                    new Timer(2f, new List<BaseNode> { new T_PretendToTalk(currentChar)},
+                    delegate
+                    {
+                        Debug.Log("I'm pretending to talk");
+                    })
+                })
             }),
             new Selector(new List<BaseNode>
             {

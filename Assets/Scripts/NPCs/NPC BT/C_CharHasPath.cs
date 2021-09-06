@@ -15,6 +15,8 @@ public class C_CharHasPath : BaseNode
     public override NodeState Evaluate()
     {
         m_state = thisChar.m_NavMesh.hasPath ? NodeState.SUCCESS : NodeState.FAILURE;
+        
+
 
         return m_state;
     }

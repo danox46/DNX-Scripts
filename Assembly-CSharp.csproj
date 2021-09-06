@@ -67,17 +67,21 @@
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Selector.cs" />
     <Compile Include="Assets\Scripts\Dialogs\DialogManager.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_EndWait.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Parallel.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\Scripts\NPCs\NPC.cs" />
     <Compile Include="Assets\Scripts\NPCs\NPC BT\C_CharCloseToPatrolPoint.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_CharHasPath.cs" />
     <Compile Include="Assets\Scripts\Leaf\Leaf.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_ChasHasDestinations.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\BaseTree.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Timer.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\NPCs\NPC BT\T_LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\NPCs\NPC BT\NPCBT.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_SetDestination.cs" />
     <Compile Include="Assets\Scripts\LeafBlower\Leafblower.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Inverter.cs" />
@@ -87,10 +91,8 @@
     <Compile Include="Assets\Scripts\Quests\QuestSystem.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Sequence.cs" />
     <Compile Include="Assets\Scripts\Character\LeafBlowerChar.cs" />
-    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_EndWait.cs" />
-    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_CharHasPath.cs" />
-    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_SetDestination.cs" />
-    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_ChasHasDestinations.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_CharEngagedToPlayer.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_PretendToTalk.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />

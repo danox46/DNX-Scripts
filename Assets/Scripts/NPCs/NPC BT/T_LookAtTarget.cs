@@ -13,6 +13,7 @@ public class T_LookAtTarget : BaseNode
 
     public override NodeState Evaluate()
     {
+        //Need to make this so it's a "smooth" lookat
         thisChar.transform.LookAt(thisChar.engagedWith);
         thisChar.transform.rotation = new Quaternion(0, thisChar.transform.rotation.y, 0, thisChar.transform.rotation.w);
 
