@@ -88,6 +88,11 @@ public class NPC : MonoBehaviour
         {
             if (!interactionClue.activeSelf)
             {
+                if (engaged)
+                {
+                    engagedWith.GetComponent<NPC>().DisengageNPC();
+                    DisengageNPC();
+                }
                 other.GetComponent<LeafBlowerChar>().SetNpcInRange(this);
                 interactionClue.SetActive(true);
             }

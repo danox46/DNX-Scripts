@@ -63,9 +63,11 @@
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_PretendToTalk.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\BaseNode.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Selector.cs" />
     <Compile Include="Assets\Scripts\Dialogs\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_CharEngagedToPlayer.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\Scripts\NPCs\NPC BT\T_EndWait.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Parallel.cs" />
@@ -91,8 +93,6 @@
     <Compile Include="Assets\Scripts\Quests\QuestSystem.cs" />
     <Compile Include="Assets\Scripts\NPCs\Behaviour Tree Setup\Sequence.cs" />
     <Compile Include="Assets\Scripts\Character\LeafBlowerChar.cs" />
-    <Compile Include="Assets\Scripts\NPCs\NPC BT\C_CharEngagedToPlayer.cs" />
-    <Compile Include="Assets\Scripts\NPCs\NPC BT\T_PretendToTalk.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
