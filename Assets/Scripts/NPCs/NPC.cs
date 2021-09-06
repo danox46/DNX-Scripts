@@ -37,6 +37,7 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
+        //Updating animator when the has velocity
         SetAnimToWalk();
 
     }
@@ -45,6 +46,8 @@ public class NPC : MonoBehaviour
     {
         Vector3 movement = direction.normalized;
         Vector3 newVelocity = new Vector3(movement.x * speed, m_Rigidbody.velocity.y, movement.z);
+
+        //transform.LookAt was giving me trouble with the X rotation. Need to check this
         transform.LookAt(newVelocity + transform.position);
         m_Rigidbody.velocity = newVelocity;
 
@@ -66,9 +69,9 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //If the player enters interaction range allow for interaction
         if(other.tag == "Player")
         {
-
             if (!interactionClue.activeSelf)
             {
                 other.GetComponent<LeafBlowerChar>().SetNpcInRange(this);
@@ -79,6 +82,7 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //Forbiding interaction if player get's out of range
         if (other.tag == "Player")
         {
             if (interactionClue.activeSelf)
@@ -89,6 +93,7 @@ public class NPC : MonoBehaviour
         }
     }
 
+    //I did this function to add anything we might need on the dialog trigger for polishing
     public void SetNPCEngaged(Transform engagedWith)
     {
         engaged = true;

@@ -6,16 +6,24 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class LeafBlowerChar : FirstPersonController
 {
+    //Dialog
     public DialogManager dialogManager;
+    public QuestSystem m_QuestSystem;
+
+    //Blower
     public Collider blowerAOE;
+    [SerializeField] private List<GameObject> leafblowers;
+
+    //Input
     private bool m_Blow;
     private bool m_Interact;
     private NPC npcInRange;
     private QuestItem itemInRage;
-    public QuestSystem m_QuestSystem;
-    public int coins;
-    [SerializeField] private List<GameObject> leafblowers;
 
+    //Stats
+    public int coins;
+
+    //Overriding start to change the m_mouselook int to include the blower
     protected override void Start()
     {
         m_CharacterController = GetComponent<CharacterController>();
@@ -29,12 +37,15 @@ public class LeafBlowerChar : FirstPersonController
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform, blowerAOE.transform);
         m_QuestSystem = GetComponent<QuestSystem>();
+
+        //InRange values are added by the NPC or the item on enter and exit trigger
         npcInRange = null;
         itemInRage = null;
     }
 
     protected override void Update()
     {
+        //Getting new inputs
         base.Update();
 
         if (!m_Blow)
@@ -50,8 +61,10 @@ public class LeafBlowerChar : FirstPersonController
 
     protected override void FixedUpdate()
     {
+
         base.FixedUpdate();
 
+        //Applying new inputs
         if (m_Blow)
         {
             blowerAOE.enabled = true;
@@ -61,6 +74,7 @@ public class LeafBlowerChar : FirstPersonController
             blowerAOE.enabled = false;
         }
 
+        //Implementing multiple option for interact
         if (m_Interact)
         {
             if(npcInRange != null)
@@ -86,6 +100,7 @@ public class LeafBlowerChar : FirstPersonController
         m_Interact = false;
     }
 
+    //InRange values are added by the NPC or the item on enter and exit trigger
     public void SetNpcInRange(NPC npc)
     {
         npcInRange = npc;
@@ -96,12 +111,14 @@ public class LeafBlowerChar : FirstPersonController
         itemInRage = questItem;
     }
 
+    //Adding rotation to the blower
     protected override void RotateView()
     {
         base.RotateView();
         m_MouseLook.BlowerLookRotationY(blowerAOE.transform);
     }
 
+    //Ignore controls when the char is busy
     public void EngageChar()
     {
         m_MouseLook.LockCursor(false);
@@ -112,6 +129,7 @@ public class LeafBlowerChar : FirstPersonController
         m_MouseLook.LockCursor(true);
     }
 
+    //New blowers need to be saved as prefabs and added to the char
     public void ChangeBlower(int inx)
     {
         Transform auxBloweTransform = blowerAOE.transform;

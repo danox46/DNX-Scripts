@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Need to move this to a new file
+//Separate quest info from quest item for inv management ease
 [System.Serializable]
 public class QuestItemInfo
 {
@@ -14,23 +16,11 @@ public class QuestItemInfo
 
 }
 
+//This needs to be added to the quest item
 public class QuestItem : MonoBehaviour
 {
-    
     public GameObject interactionClue;
     public QuestItemInfo questItemInfo;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetForDestruction()
     {
@@ -39,12 +29,14 @@ public class QuestItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Allows interaction when in range
         if (other.tag == "Player")
         {
 
             if (!interactionClue.activeSelf)
             {
                 other.GetComponent<LeafBlowerChar>().SetItemInRange(this);
+                //The set in range is working but there's a problem with interaction clue
                 interactionClue.SetActive(true);
             }
         }

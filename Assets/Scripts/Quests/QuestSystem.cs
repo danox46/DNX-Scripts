@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Need to move this to a new file
+//Individual quest information
 [System.Serializable]
 public struct Quest
 {
@@ -48,6 +50,7 @@ public class QuestSystem : MonoBehaviour
         }
     }
 
+    //Checking if an Item fullfils an active quest
     public bool CheckQuests(QuestItem newItem)
     {
         foreach (Quest currentQuest in activeQuests)
@@ -62,6 +65,7 @@ public class QuestSystem : MonoBehaviour
         return false;
     }
 
+    //Checking if a quest if fullfiled by an intem in the inventory
     public bool CheckItems(Quest newQuest)
     {
         foreach (QuestItemInfo currentItem in questInventory)
@@ -76,11 +80,13 @@ public class QuestSystem : MonoBehaviour
         return false;
     }
 
+    //I think I'm not using this one
     public void MarkQuestReady(Quest currentQuest)
     {
         currentQuest.readyForDeliver = true;
     }
 
+    //Exchange the full GameObejct with an intance of it's info on the inventory
     public void LootItem(QuestItem item)
     {
         if (!questInventory.Contains(item.questItemInfo))
@@ -94,6 +100,7 @@ public class QuestSystem : MonoBehaviour
     {
         if (!completedQuests.Contains(finishedQuest))
         {
+            //Adding quest to completed list and taking it from active quests
             completedQuests.Add(finishedQuest);
 
             if (activeQuests.Contains(finishedQuest))
@@ -101,6 +108,7 @@ public class QuestSystem : MonoBehaviour
                 activeQuests.Remove(finishedQuest);
             }
 
+            //Starts on a negative to check if it failed
             int itemIndex = -1;
 
             foreach(QuestItemInfo item in questInventory)
@@ -111,17 +119,20 @@ public class QuestSystem : MonoBehaviour
                 }
             }
 
+            //Remove the item that fullfilled the quest
             if(itemIndex >= 0)
             {
                 questInventory.RemoveAt(itemIndex);
             }
 
+            //Do whatever was defined as a reward
             ClaimReward(finishedQuest.rewardCode);
         }
     }
 
     private void ClaimReward(int rewardCode)
     {
+        //Reward options
         switch (rewardCode)
         {
             case 0:

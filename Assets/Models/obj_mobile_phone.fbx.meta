@@ -3,7 +3,27 @@ guid: faee10105b596a94b9a754b842b25bce
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BLACK
+    second: {fileID: 2100000, guid: 66c7d29341dcb6c458a2df299b36cb05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green_Dark
+    second: {fileID: 2100000, guid: de827390bf91bfb4da17c6eeb7913291, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red_wheels
+    second: {fileID: 2100000, guid: 9ef2286168a46af4fbfb15afac0030e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Texture_Phone
+    second: {fileID: 2100000, guid: 67e9b6a2981edb448b0d2f326dfb5503, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

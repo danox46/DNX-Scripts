@@ -15,12 +15,7 @@ public class Leaf : MonoBehaviour
         setToDestroy = false;
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        
-    }
-
+    //Expand the destroy function to remove body leaf from blower list, and make it so it's not added
     public void SetForDestruction()
     {
         if (!setToDestroy)
@@ -39,12 +34,10 @@ public class Leaf : MonoBehaviour
     public void SetBlowerOnRange(Leafblower blower)
     {
         blowerOnRange = blower;
-        Debug.Log("Blower is on Range");
     }
 
     public void SetBlowerOutOfRange()
     {
-        Debug.Log("blower is out of range");
         blowerOnRange = null;
     }
 }
