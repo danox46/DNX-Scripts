@@ -121,6 +121,7 @@ public class LeafBlowerChar : FirstPersonController
     //Ignore controls when the char is busy
     public void EngageChar()
     {
+        transform.LookAt(new Vector3(npcInRange.transform.position.x, npcInRange.transform.position.y + 0.3f, npcInRange.transform.position.z));
         m_MouseLook.LockCursor(false);
     }
 
