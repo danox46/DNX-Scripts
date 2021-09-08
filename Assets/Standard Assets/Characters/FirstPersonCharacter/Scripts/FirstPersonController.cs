@@ -11,32 +11,32 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] private bool m_IsWalking;
-        [SerializeField] private float m_WalkSpeed;
-        [SerializeField] private float m_RunSpeed;
-        [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
-        [SerializeField] private float m_JumpSpeed;
-        [SerializeField] private float m_StickToGroundForce;
-        [SerializeField] private float m_GravityMultiplier;
+        [SerializeField] protected bool m_IsWalking;
+        [SerializeField] protected float m_WalkSpeed;
+        [SerializeField] protected float m_RunSpeed;
+        [SerializeField] [Range(0f, 1f)] protected float m_RunstepLenghten;
+        [SerializeField] protected float m_JumpSpeed;
+        [SerializeField] protected float m_StickToGroundForce;
+        [SerializeField] protected float m_GravityMultiplier;
         [SerializeField] protected MouseLook m_MouseLook;
-        [SerializeField] private bool m_UseFovKick;
+        [SerializeField] protected bool m_UseFovKick;
         [SerializeField] protected FOVKick m_FovKick = new FOVKick();
-        [SerializeField] private bool m_UseHeadBob;
+        [SerializeField] protected bool m_UseHeadBob;
         [SerializeField] protected CurveControlledBob m_HeadBob = new CurveControlledBob();
-        [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
+        [SerializeField] protected LerpControlledBob m_JumpBob = new LerpControlledBob();
         [SerializeField] protected float m_StepInterval;
-        [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
-        [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
-        [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] protected AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+        [SerializeField] protected AudioClip m_JumpSound;           // the sound played when character leaves the ground.
+        [SerializeField] protected AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         protected Camera m_Camera;
-        private bool m_Jump;
-        private float m_YRotation;
-        private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+        protected bool m_Jump;
+        protected float m_YRotation;
+        protected Vector2 m_Input;
+        protected Vector3 m_MoveDir = Vector3.zero;
         protected CharacterController m_CharacterController;
-        private CollisionFlags m_CollisionFlags;
-        private bool m_PreviouslyGrounded;
+        protected CollisionFlags m_CollisionFlags;
+        protected bool m_PreviouslyGrounded;
         protected Vector3 m_OriginalCameraPosition;
         protected float m_StepCycle;
         protected float m_NextStep;
@@ -68,7 +68,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = CrossPlatformInputManager.GetButton("Jump");
             }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -117,25 +117,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
 
                 if (m_CharacterController.isGrounded)
-            {
-                m_MoveDir.y = -m_StickToGroundForce;
-
-                if (m_Jump)
                 {
-                    m_MoveDir.y = m_JumpSpeed;
-                    PlayJumpSound();
-                    m_Jump = false;
-                    m_Jumping = true;
+                    m_MoveDir.y = -m_StickToGroundForce;
+
+                    if (m_Jump)
+                    {
+                        m_MoveDir.y = m_JumpSpeed;
+                        PlayJumpSound();
+                        m_Jump = false;
+                        m_Jumping = true;
+                    }
                 }
-            }
-            else
-            {
-                m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
-            }
-            m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
+                else
+                {
+                    m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+                }
+                m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
 
-            
+
 
                 ProgressStepCycle(speed);
                 UpdateCameraPosition(speed);
@@ -147,14 +147,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void PlayJumpSound()
+        protected void PlayJumpSound()
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
         }
 
 
-        private void ProgressStepCycle(float speed)
+        protected void ProgressStepCycle(float speed)
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
@@ -190,7 +190,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void UpdateCameraPosition(float speed)
+        protected void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
@@ -214,7 +214,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void GetInput(out float speed)
+        protected void GetInput(out float speed)
         {
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");

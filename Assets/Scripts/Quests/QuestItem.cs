@@ -19,12 +19,18 @@ public class QuestItemInfo
 //This needs to be added to the quest item
 public class QuestItem : MonoBehaviour
 {
+    [SerializeField] private float turnSpeed;
     public GameObject interactionClue;
     public QuestItemInfo questItemInfo;
 
     public void SetForDestruction()
     {
         GameObject.Destroy(gameObject);
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(new Vector3(0, turnSpeed, 0));
     }
 
     private void OnTriggerEnter(Collider other)

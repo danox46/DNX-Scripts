@@ -62,7 +62,64 @@ public class LeafBlowerChar : FirstPersonController
     protected override void FixedUpdate()
     {
 
-        base.FixedUpdate();
+        float speed;
+        GetInput(out speed);
+        // always move along the camera forward as it is the direction that it being aimed at
+        Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
+
+        // get a normal for the surface that is being touched to move along it
+        RaycastHit hitInfo;
+        Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
+                           m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
+        desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+
+        m_MoveDir.x = desiredMove.x * speed;
+        m_MoveDir.z = desiredMove.z * speed;
+
+        if (m_MouseLook.CursorIsLocked)
+        {
+
+            if (m_CharacterController.isGrounded)
+            {
+                m_MoveDir.y = -m_StickToGroundForce;
+
+            }
+
+            if (m_Jump)
+            {
+                RaycastHit verticalHitInfo;
+
+                Physics.Raycast(new Ray(transform.position, Vector3.down), out verticalHitInfo, 10f);
+
+                if (verticalHitInfo.collider != null) 
+                {
+                    m_MoveDir.y = m_JumpSpeed / Mathf.Sqrt(verticalHitInfo.distance/2);
+                    m_Jump = false;
+                    m_Jumping = true;
+                }
+
+                m_MoveDir.x = m_MoveDir.x / 4;
+                m_MoveDir.z = m_MoveDir.z / 4;
+
+
+                PlayJumpSound();
+            }
+
+            if(!m_CharacterController.isGrounded)
+            {
+                m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
+            }
+
+            m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
+
+
+
+
+            ProgressStepCycle(speed);
+            UpdateCameraPosition(speed);
+        }
+
+        m_MouseLook.UpdateCursorLock();
 
         //Applying new inputs
         if (m_Blow)
@@ -143,6 +200,11 @@ public class LeafBlowerChar : FirstPersonController
         blowerAOE = newBlower.GetComponent<Collider>();
 
         GameObject.Destroy(auxBloweTransform.gameObject);
+    }
+
+    public void BlowerJetPack()
+    {
+       
     }
 
 }

@@ -100,6 +100,9 @@ public class NPC : MonoBehaviour
 
         if(other.tag == "Npc")
         {
+            if(m_NavMesh.hasPath)
+                m_NavMesh.SetDestination(transform.position);
+
             float roll = Random.Range(0.1f, 1f);
 
             if (!engaged && !other.GetComponent<NPC>().engaged)
@@ -129,6 +132,18 @@ public class NPC : MonoBehaviour
                 interactionClue.SetActive(false);
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.attachedRigidbody != null)
+        {
+
+
+            Vector3 newDestination = new Vector3(transform.position.x - collision.relativeVelocity.x, transform.position.y, transform.position.z - collision.relativeVelocity.z);
+
+            m_NavMesh.SetDestination(newDestination);
+        }   
     }
 
     public void PretendInteraction()
@@ -168,5 +183,7 @@ public class NPC : MonoBehaviour
         if(patrolPoints.Count > 0)
             currentPatrolPoint = patrolPoints[Random.Range(0, patrolPoints.Count)];
     }
+
+
 
 }
