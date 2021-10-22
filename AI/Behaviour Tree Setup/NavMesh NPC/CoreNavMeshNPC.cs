@@ -22,7 +22,10 @@ namespace DNX.Characters
         }
 
         //BT functions
-
+        /// <summary>
+        /// <para>By default, sets the NPC to stop and assigns the engagement target</para>
+        /// </summary>
+        /// <param name="target">The target to be engaged by the NPC</param>
         public virtual void EngageChar(Transform target)
         {
             m_NavMeshAgent.SetDestination(transform.position);
@@ -34,6 +37,7 @@ namespace DNX.Characters
         /// </summary>
         /// <returns></returns>
         public virtual bool CharIsEngaged() { return _engagedTo != null; }
+
         /// <summary>
         /// If the NPC is engaged, it should be looking at the target
         /// </summary>
@@ -49,7 +53,7 @@ namespace DNX.Characters
         /// <summary>
         /// <para>If the NPC is not engaged to the player is assumed engaged to other NPC and should pretend to talk</para>
         /// <para>If you want the NPC to perform aditional interactions spesify that here</para>
-        /// <example> Switch the target and set to perfor the right action
+        /// <example> Switch the target and set to perform the right action
         /// <code>
         /// switch (target)
         ///    {
@@ -72,7 +76,8 @@ namespace DNX.Characters
         public abstract bool CharHasDestinations();
 
         /// <summary>
-        /// Prevents the NPC from setting a new destination if it's already on it's way to one
+        /// <para>Prevents the NPC from setting a new destination if it's already on it's way to one</para>
+        /// <para>Remember to override this if you use a different pathfinding method</para>
         /// </summary>
         /// <returns></returns>
         public virtual bool CharIsAdvancingToDestination() { return m_NavMeshAgent.hasPath; }
@@ -88,7 +93,6 @@ namespace DNX.Characters
         /// <summary>
         /// Allows to request a destination from outside the class
         /// </summary>
-        /// <param name="destinations"></param>
         public virtual void SetDestination() { m_NavMeshAgent.SetDestination(UpdateDestination(currentDestinations)); }
 
         public virtual Vector3 GetDestination() { return m_NavMeshAgent.destination; }

@@ -4,6 +4,7 @@ using UnityEngine;
 using DnxBehaviorTree;
 using DNX.Characters;
 
+//The BT sets this to be called on every update that the char is engaged to manage a smooth look at without extra updates
 public class T_LookAtEngaged : BaseNode
 {
     private CoreNavMeshNPC thisChar;
@@ -15,7 +16,7 @@ public class T_LookAtEngaged : BaseNode
 
     public override NodeState Evaluate()
     {
-        //Need to make this so it's a "smooth" lookat
+        //Use the context look at target
         thisChar.LookAtTarget(thisChar.EngagedTo);
 
         m_state = NodeState.SUCCESS;
